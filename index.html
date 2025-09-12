@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Personal Site</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body class="theme-black">
+
+    <div class="container">
+
+        <header>
+            <div class="logo">
+                YOUR NAME
+            </div>
+            <nav>
+                <a href="#">HOME</a>
+                <a href="#">PROJECTS</a>
+                <a href="#">BLOG</a>
+                <a href="#">CONTACT</a>
+            </nav>
+        </header>
+
+        <div class="main-content">
+
+            <main>
+                <section class="welcome-section">
+                    <div class="welcome-text">
+                        <h2>WELCOME TO MY CORNER OF THE WEB</h2>
+                        <ul>
+                            <li>Explore my latest projects & case studies</li>
+                            <li>Read my thoughts on technology & design</li>
+                            <li>Find out more about my skills & experience</li>
+                            <li>Get in touch for collaborations</li>
+                        </ul>
+                    </div>
+                    <div class="welcome-image">
+                        <img src="https://via.placeholder.com/150" alt="Retro pixel art avatar">
+                    </div>
+                </section>
+
+                <section>
+                    <h3>ABOUT ME</h3>
+                    <p>
+                        This is the place to write a short bio about yourself. Talk about your passion for your work, your hobbies, or what drives you. Keep it concise and engaging, much like the "WHAT IS STEAM?" section in the original image.
+                    </p>
+                    <p>
+                        At its core, this site is a distributed file system and shared set of technology components... just kidding. It's built with simple HTML and CSS to recreate a classic 2003 web aesthetic.
+                    </p>
+                </section>
+
+                 <section>
+                    <h3>MY SKILLS</h3>
+                    <p>
+                        List your skills here. You can use a paragraph or another list. For example: HTML, CSS, JavaScript, Python, UI/UX Design, Project Management, and more.
+                    </p>
+                </section>
+            </main>
+
+            <aside>
+                <div class="widget">
+                    <h4>LATEST UPDATES</h4>
+                    <h5>New Blog Post Live</h5>
+                    <p>Just published a new article on modern web development with a retro twist. Check it out now!</p>
+                    <a href="#">Read more...</a>
+                </div>
+
+                <div class="widget">
+                    <h4>FEATURED PROJECT</h4>
+                    <p>My latest project, "Retro Resurgence", is a deep dive into early 2000s web design principles.</p>
+                     <a href="#">View on GitHub...</a>
+                </div>
+                
+                <div class="widget">
+                    <h4>GET IN TOUCH</h4>
+                    <p>Have a question or a project proposal? I'm currently available for freelance work.</p>
+                    <a href="#">Email me!</a>
+                </div>
+            </aside>
+
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2025 Your Name. All rights reserved. Read our <a href="#">privacy policy</a>.</p>
+                
+                <div class="theme-selector">
+                    <span>Select Theme:</span>
+                    <span class="theme-button" data-theme="theme-green"></span>
+                    <span class="theme-button" data-theme="theme-blue"></span>
+                    <span class="theme-button" data-theme="theme-amber"></span>
+                    <span class="theme-button" data-theme="theme-red"></span>
+                    <span class="theme-button" data-theme="theme-black"></span>
+                </div>
+            </div>
+        </footer>
+
+    </div> 
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeButtons = document.querySelectorAll('.theme-button');
+            const body = document.body;
+            const themeClasses = ['theme-green', 'theme-blue', 'theme-amber', 'theme-red', 'theme-black'];
+
+            themeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const theme = button.dataset.theme;
+                    
+                    body.classList.remove(...themeClasses);
+
+                    body.classList.add(theme);
+                });
+            });
+        });
+    </script>
+    
+</body>
+</html>

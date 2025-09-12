@@ -1,0 +1,256 @@
+/* --- 1. Color Theme Definitions --- */
+
+/* Green Theme (Original Steam) */
+.theme-green {
+    --bg-color: #2A3A2B;
+    --text-color: #C5C5C5;
+    --heading-color: #FFFFFF;
+    --widget-bg-color: #1E1E1E;
+    --border-color: #4A4A4A;
+    --accent-color: #6A8B3C;
+}
+
+/* Blue Theme (Blueprint/Terminal) */
+.theme-blue {
+    --bg-color: #0d1b2a;
+    --text-color: #a8b2d1;
+    --heading-color: #ccd6f6;
+    --widget-bg-color: #172a45;
+    --border-color: #233554;
+    --accent-color: #64ffda;
+}
+
+/* Amber Theme (Monochrome Terminal) */
+.theme-amber {
+    --bg-color: #1a1a1a;
+    --text-color: #ffb000;
+    --heading-color: #ffc957;
+    --widget-bg-color: #111111;
+    --border-color: #333333;
+    --accent-color: #ffb000;
+}
+
+/* Red Theme (Alert/Error) */
+.theme-red {
+    --bg-color: #1c0000;
+    --text-color: #ff5555;
+    --heading-color: #ff8888;
+    --widget-bg-color: #111111;
+    --border-color: #4d0000;
+    --accent-color: #ff5555; 
+}
+
+/* Black & Grey Theme (Classic Monochrome) */
+.theme-black {
+    --bg-color: #121212;
+    --text-color: #b3b3b3;
+    --heading-color: #e0e0e0;
+    --widget-bg-color: #1e1e1e;
+    --border-color: #333333;
+    --accent-color: #e0e0e0;
+}
+
+
+/* --- 2. Global Styles using Variables --- */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: Consolas, 'Courier New', 'Lucida Console', monospace;
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.container {
+    max-width: 850px;
+    width: 95%;
+    margin: 20px auto;
+}
+
+a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+h2, h3, h4, h5 {
+    margin: 0 0 10px 0;
+    padding: 0;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--heading-color);
+}
+
+h3 {
+    font-size: 14px;
+    color: var(--heading-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 5px;
+    margin-top: 25px;
+}
+
+p {
+    line-height: 1.6;
+}
+
+/* --- 3. Component Styles using Variables --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    margin-bottom: 15px;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+    color: var(--heading-color);
+    letter-spacing: 1px;
+}
+
+nav a {
+    margin-left: 20px;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.main-content {
+    display: flex;
+    gap: 20px;
+}
+
+main {
+    flex: 2;
+}
+
+aside {
+    flex: 1;
+}
+
+.welcome-section {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.welcome-text {
+    flex: 1;
+}
+
+.welcome-section ul {
+    list-style-type: '» ';
+    padding-left: 20px;
+    margin: 15px 0 0 0;
+}
+
+.welcome-section ul li {
+    padding-bottom: 8px;
+}
+
+.welcome-image img {
+    border: 1px solid var(--border-color);
+}
+
+.widget {
+    background-color: var(--widget-bg-color);
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.widget h4 {
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--heading-color);
+    border-left: 3px solid var(--accent-color);
+    padding-left: 8px;
+}
+
+.widget h5 {
+    font-size: 12px;
+    color: var(--heading-color);
+}
+
+.widget p {
+    margin-top: 0;
+    font-size: 12px;
+}
+
+/* --- 4. Footer and Theme Selector --- */
+footer {
+    border-top: 1px solid var(--border-color);
+    padding: 10px 0;
+    margin-top: 20px;
+    font-size: 11px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.theme-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.theme-button {
+    width: 15px;
+    height: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 50%; /* Makes it a circle */
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.theme-button:hover {
+    transform: scale(1.2);
+}
+
+/* Assigning the swatch colors based on their theme */
+[data-theme="theme-green"] { background-color: #6A8B3C; }
+[data-theme="theme-blue"]  { background-color: #64ffda; }
+[data-theme="theme-amber"] { background-color: #ffb000; }
+[data-theme="theme-red"]   { background-color: #ff5555; }
+[data-theme="theme-black"] { background-color: #333333; } /* Changed to a darker grey */
+
+
+/* --- 5. Responsive Styles (No change needed here) --- */
+@media screen and (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    nav a {
+        margin: 0 10px;
+    }
+    .main-content {
+        flex-direction: column;
+    }
+    .welcome-section {
+        flex-direction: column;
+    }
+    .welcome-image {
+        margin: 20px auto 0;
+    }
+    h3 {
+        margin-top: 35px;
+    }
+}
