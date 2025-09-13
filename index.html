@@ -3,79 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Personal Site</title>
+    <title>Ruthvik's Personal Website</title>
     <link href="style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
-<body class="theme-black">
+<body class="theme-black page-home">
 
     <div class="container">
 
         <header>
             <div class="logo">
-                YOUR NAME
+                <!-- "YOUR NAME" logo removed -->
             </div>
-            <nav>
-                <a href="#">HOME</a>
-                <a href="#">PROJECTS</a>
-                <a href="#">BLOG</a>
-                <a href="#">CONTACT</a>
-            </nav>
         </header>
 
         <div class="main-content">
 
             <main>
-                <section class="welcome-section">
-                    <div class="welcome-text">
-                        <h2>WELCOME TO MY CORNER OF THE WEB</h2>
-                        <ul>
-                            <li>Explore my latest projects & case studies</li>
-                            <li>Read my thoughts on technology & design</li>
-                            <li>Find out more about my skills & experience</li>
-                            <li>Get in touch for collaborations</li>
-                        </ul>
-                    </div>
-                    <div class="welcome-image">
-                        <img src="https://via.placeholder.com/150" alt="Retro pixel art avatar">
+                <section class="home-nav-section">
+                    <div class="home-nav-grid">
+                        <a href="projects.html" class="grid-item nav-item">
+                            <div class="grid-item-content">
+                                <i class="fa-solid fa-folder-open"></i>
+                                <h5>Projects</h5>
+                            </div>
+                        </a>
+                        <a href="blog.html" class="grid-item nav-item">
+                            <div class="grid-item-content">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                                <h5>Blog</h5>
+                            </div>
+                        </a>
+                        <a href="contact.html" class="grid-item nav-item">
+                            <div class="grid-item-content">
+                                <i class="fa-solid fa-envelope"></i>
+                                <h5>Contact</h5>
+                            </div>
+                        </a>
                     </div>
                 </section>
 
                 <section>
                     <h3>ABOUT ME</h3>
                     <p>
-                        This is the place to write a short bio about yourself. Talk about your passion for your work, your hobbies, or what drives you. Keep it concise and engaging, much like the "WHAT IS STEAM?" section in the original image.
+                        I'm a passionate developer and designer with a love for creating clean, efficient, and user-friendly digital experiences. My work is driven by a curiosity for how things work and a desire to build tools that solve real-world problems.
                     </p>
                     <p>
-                        At its core, this site is a distributed file system and shared set of technology components... just kidding. It's built with simple HTML and CSS to recreate a classic 2003 web aesthetic.
+                        This site itself is a project, built with simple HTML and CSS to recreate a classic 2003 web aesthetic, proving that good design is timeless.
                     </p>
                 </section>
 
                  <section>
                     <h3>MY SKILLS</h3>
-                    <p>
-                        List your skills here. You can use a paragraph or another list. For example: HTML, CSS, JavaScript, Python, UI/UX Design, Project Management, and more.
-                    </p>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h5>LANGUAGES</h5>
+                            <ul>
+                                <li>JavaScript (ES6+)</li>
+                                <li>HTML5 & CSS3</li>
+                                <li>Python</li>
+                                <li>C++</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h5>FRAMEWORKS</h5>
+                            <ul>
+                                <li>React</li>
+                                <li>Node.js</li>
+                                <li>Express</li>
+                                <li>Flask</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h5>TOOLS</h5>
+                            <ul>
+                                <li>Git & GitHub</li>
+                                <li>Webpack</li>
+                                <li>Figma</li>
+                                <li>MongoDB</li>
+                            </ul>
+                        </div>
+                    </div>
                 </section>
             </main>
 
             <aside>
                 <div class="widget">
-                    <h4>LATEST UPDATES</h4>
-                    <h5>New Blog Post Live</h5>
-                    <p>Just published a new article on modern web development with a retro twist. Check it out now!</p>
-                    <a href="#">Read more...</a>
+                    <h4>LATEST POST</h4>
+                    <div class="featured-item">
+                        <a href="blog.html">
+                            <h5>Why Retro Web Design is Making a Comeback</h5>
+                            <p>Exploring the appeal of nostalgia and simplicity in modern web development trends...</p>
+                        </a>
+                    </div>
                 </div>
 
                 <div class="widget">
                     <h4>FEATURED PROJECT</h4>
-                    <p>My latest project, "Retro Resurgence", is a deep dive into early 2000s web design principles.</p>
-                     <a href="#">View on GitHub...</a>
+                     <div class="featured-item">
+                        <a href="projects.html">
+                            <h5>Retro Resurgence</h5>
+                            <p>A deep dive into early 2000s web design principles using modern CSS...</p>
+                        </a>
+                    </div>
                 </div>
                 
                 <div class="widget">
-                    <h4>GET IN TOUCH</h4>
-                    <p>Have a question or a project proposal? I'm currently available for freelance work.</p>
-                    <a href="#">Email me!</a>
+                    <h4>CONNECT</h4>
+                    <ul class="social-links">
+                        <li><a href="https://github.com/RealRuthvik" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a></li>
+                        <li><a href="https://www.linkedin.com/in/ruthvik-reddy-gade/" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="https://steamcommunity.com/id/RealRuthvik/" target="_blank"><i class="fa-brands fa-steam"></i> Steam</a></li>
+                        <li><a href="https://www.instagram.com/realruthvik/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+                    </ul>
                 </div>
             </aside>
 
@@ -83,10 +123,9 @@
 
         <footer>
             <div class="footer-content">
-                <p>&copy; 2025 Your Name. All rights reserved. Read our <a href="#">privacy policy</a>.</p>
-                
+                <p>&copy; 2025 Your Name. All rights reserved.</p>
                 <div class="theme-selector">
-                    <span>Select Theme:</span>
+                    <span>Theme:</span>
                     <span class="theme-button" data-theme="theme-green"></span>
                     <span class="theme-button" data-theme="theme-blue"></span>
                     <span class="theme-button" data-theme="theme-amber"></span>
@@ -103,13 +142,10 @@
             const themeButtons = document.querySelectorAll('.theme-button');
             const body = document.body;
             const themeClasses = ['theme-green', 'theme-blue', 'theme-amber', 'theme-red', 'theme-black'];
-
             themeButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     const theme = button.dataset.theme;
-                    
                     body.classList.remove(...themeClasses);
-
                     body.classList.add(theme);
                 });
             });
@@ -118,3 +154,4 @@
     
 </body>
 </html>
+

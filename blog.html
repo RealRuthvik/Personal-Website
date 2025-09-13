@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Personal Site</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body class="theme-black">
+
+    <div class="container">
+
+        <header>
+            <!-- "YOUR NAME" logo removed -->
+            <nav>
+                <a href="index.html">HOME</a>
+                <a href="projects.html">PROJECTS</a>
+                <a href="blog.html">BLOG</a>
+                <a href="contact.html">CONTACT</a>
+            </nav>
+        </header>
+
+        <div class="main-content">
+
+            <main>
+                <section>
+                    <div class="page-header">
+                        <h3>LATEST POSTS</h3>
+                        <p>My thoughts on technology, design, and everything in between.</p>
+                    </div>
+                    
+                    <div class="grid-container">
+                        <a href="#" class="grid-item"><div class="grid-item-content"><h5>Why Retro Web Design is Making a Comeback</h5><p class="grid-item-meta">September 12, 2025</p><p>Exploring the appeal of nostalgia and simplicity in modern web development trends.</p></div></a>
+                        <a href="#" class="grid-item"><div class="grid-item-content"><h5>A Guide to CSS Variables for Theming</h5><p class="grid-item-meta">September 05, 2025</p><p>How using CSS variables can make your projects more modular and easier to maintain.</p></div></a>
+                        <a href="#" class="grid-item"><div class="grid-item-content"><h5>Getting Started with C++ Game Development</h5><p class="grid-item-meta">August 28, 2025</p><p>A beginner-friendly look at the tools and concepts needed to build your first simple game.</p></div></a>
+                        <a href="#" class="grid-item"><div class="grid-item-content"><h5>The Art of Debugging</h5><p class="grid-item-meta">August 21, 2025</p><p>Tips and tricks for efficient debugging that I've learned over the years.</p></div></a>
+                        <a href="#" class="grid-item"><div class="grid-item-content"><h5>State Management in Modern Web Apps</h5><p class="grid-item-meta">August 15, 2025</p><p>A comparative look at different state management libraries and their use cases.</p></div></a>
+                        <a href="#" class="grid-item"><div class="grid-item-content"><h5>Understanding REST APIs</h5><p class="grid-item-meta">August 08, 2025</p><p>A clear and concise explanation of what REST APIs are and how they work.</p></div></a>
+                        <a href="#" class="grid-item"><div class="grid-item-content"><h5>The Importance of Web Accessibility</h5><p class="grid-item-meta">August 01, 2025</p><p>Why making your websites accessible to everyone is not just good practice, but essential.</p></div></a>
+                    </div>
+                </section>
+            </main>
+
+            <aside>
+                <div class="widget">
+                    <h4>SEARCH POSTS</h4>
+                    <form class="search-widget">
+                        <input type="search" placeholder="Enter keywords...">
+                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                </div>
+                <div class="widget">
+                    <h4>FEATURED PROJECT</h4>
+                     <div class="featured-item">
+                        <a href="projects.html">
+                            <h5>Retro Resurgence</h5>
+                            <p>A deep dive into early 2000s web design principles using modern CSS...</p>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2025 Your Name. All rights reserved.</p>
+                <div class="theme-selector">
+                    <span>Theme:</span>
+                    <span class="theme-button" data-theme="theme-green"></span>
+                    <span class="theme-button" data-theme="theme-blue"></span>
+                    <span class="theme-button" data-theme="theme-amber"></span>
+                    <span class="theme-button" data-theme="theme-red"></span>
+                    <span class="theme-button" data-theme="theme-black"></span>
+                </div>
+            </div>
+        </footer>
+
+    </div> 
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeButtons = document.querySelectorAll('.theme-button');
+            const body = document.body;
+            const themeClasses = ['theme-green', 'theme-blue', 'theme-amber', 'theme-red', 'theme-black'];
+
+            themeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const theme = button.dataset.theme;
+                    body.classList.remove(...themeClasses);
+                    body.classList.add(theme);
+                });
+            });
+        });
+    </script>
+    
+</body>
+</html>
+

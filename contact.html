@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me - Personal Site</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body class="theme-black">
+
+    <div class="container">
+
+        <header>
+            <!-- "YOUR NAME" logo removed -->
+            <nav>
+                <a href="index.html">HOME</a>
+                <a href="projects.html">PROJECTS</a>
+                <a href="blog.html">BLOG</a>
+                <a href="contact.html">CONTACT</a>
+            </nav>
+        </header>
+
+        <div class="main-content">
+
+            <main>
+                <section>
+                    <h3>GET IN TOUCH</h3>
+                    <p>
+                        Have a question, a project proposal, or just want to say hello? Fill out the form below and I'll get back to you as soon as possible.
+                    </p>
+
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label for="name">YOUR NAME</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">YOUR EMAIL</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">YOUR MESSAGE</label>
+                            <textarea id="message" name="message" rows="6" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">SEND MESSAGE</button>
+                    </form>
+                </section>
+            </main>
+
+            <aside>
+                <div class="widget">
+                    <h4>CONTACT INFO</h4>
+                    <p>
+                        <strong>Email:</strong><br>
+                        <a href="mailto:email@example.com">email@example.com</a>
+                    </p>
+                    <p>
+                        <strong>Location:</strong><br>
+                        City, Country
+                    </p>
+                </div>
+                 <div class="widget">
+                    <h4>AVAILABILITY</h4>
+                    <p>I'm currently available for freelance work and open to new opportunities.</p>
+                </div>
+                <div class="widget">
+                    <h4>CONNECT</h4>
+                    <ul class="social-links">
+                        <li>
+                            <a href="https://github.com/RealRuthvik" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/ruthvik-reddy-gade/" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                        </li>
+                        <li>
+                            <a href="https://steamcommunity.com/id/RealRuthvik/" target="_blank"><i class="fa-brands fa-steam"></i> Steam</a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/realruthvik/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2025 Your Name. All rights reserved.</p>
+                
+                <div class="theme-selector">
+                    <span>Theme:</span>
+                    <span class="theme-button" data-theme="theme-green"></span>
+                    <span class="theme-button" data-theme="theme-blue"></span>
+                    <span class="theme-button" data-theme="theme-amber"></span>
+                    <span class="theme-button" data-theme="theme-red"></span>
+                    <span class="theme-button" data-theme="theme-black"></span>
+                </div>
+            </div>
+        </footer>
+
+    </div> 
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeButtons = document.querySelectorAll('.theme-button');
+            const body = document.body;
+            const themeClasses = ['theme-green', 'theme-blue', 'theme-amber', 'theme-red', 'theme-black'];
+
+            themeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const theme = button.dataset.theme;
+                    body.classList.remove(...themeClasses);
+                    body.classList.add(theme);
+                });
+            });
+        });
+    </script>
+    
+</body>
+</html>
+

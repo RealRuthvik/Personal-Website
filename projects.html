@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Personal Site</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body class="theme-black">
+
+    <div class="container">
+
+        <header>
+            <!-- "YOUR NAME" logo removed -->
+            <nav>
+                <a href="index.html">HOME</a>
+                <a href="projects.html">PROJECTS</a>
+                <a href="blog.html">BLOG</a>
+                <a href="contact.html">CONTACT</a>
+            </nav>
+        </header>
+
+        <div class="main-content">
+
+            <main>
+                <section>
+                    <div class="page-header">
+                        <h3>MY PROJECTS</h3>
+                        <p>Here are some of the projects I've worked on. Click on any of them to learn more.</p>
+                    </div>
+                    
+                    <div class="grid-container">
+                        <a href="#" class="grid-item"><div class="grid-item-content"><h5>Retro Resurgence</h5><p>A deep dive into early 2000s web design principles, recreating classic layouts with modern CSS.</p></div></a>
+                        <a href="#" class="grid-item"><div class="grid-item-content"><h5>Data Visualization Bot</h5><p>A Python-based bot that scrapes data and generates insightful charts and graphs automatically.</p></div></a>
+                        <a href="#" class="grid-item"><div class="grid-item-content"><h5>Terminal Portfolio</h5><p>This very website! Built with a focus on simplicity, speed, and a retro terminal aesthetic.</p></div></a>
+                        <a href="#" class="grid-item"><div class="grid-item-content"><h5>Pixel Art Engine</h5><p>A simple game engine written in C++ for creating and animating pixel art characters.</p></div></a>
+                        <a href="#" class="grid-item"><div class="grid-item-content"><h5>Component Library</h5><p>A reusable component library for React, designed for consistency and ease of use across projects.</p></div></a>
+                        <a href="#" class="grid-item"><div class="grid-item-content"><h5>API Weather App</h5><p>A clean, simple weather application that fetches data from a third-party API and displays it beautifully.</p></div></a>
+                        <a href="#" class="grid-item"><div class="grid-item-content"><h5>E-commerce Backend</h5><p>A robust back-end system for an e-commerce platform, built with Node.js, Express, and MongoDB.</p></div></a>
+                        <a href="#" class="grid-item"><div class="grid-item-content"><h5>Task Management Tool</h5><p>A collaborative task manager application that helps teams organize and track their work effectively.</p></div></a>
+                    </div>
+                </section>
+            </main>
+
+            <aside>
+                <div class="widget">
+                    <h4>SEARCH PROJECTS</h4>
+                    <form class="search-widget">
+                        <input type="search" placeholder="Enter keywords...">
+                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                </div>
+                <div class="widget">
+                    <h4>FEATURED POST</h4>
+                    <div class="featured-item">
+                        <a href="blog.html">
+                            <h5>Why Retro Web Design is Making a Comeback</h5>
+                            <p>Read my thoughts on the appeal of nostalgia and simplicity in modern web dev...</p>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2025 Your Name. All rights reserved.</p>
+                <div class="theme-selector">
+                    <span>Theme:</span>
+                    <span class="theme-button" data-theme="theme-green"></span>
+                    <span class="theme-button" data-theme="theme-blue"></span>
+                    <span class="theme-button" data-theme="theme-amber"></span>
+                    <span class="theme-button" data-theme="theme-red"></span>
+                    <span class="theme-button" data-theme="theme-black"></span>
+                </div>
+            </div>
+        </footer>
+
+    </div> 
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeButtons = document.querySelectorAll('.theme-button');
+            const body = document.body;
+            const themeClasses = ['theme-green', 'theme-blue', 'theme-amber', 'theme-red', 'theme-black'];
+
+            themeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const theme = button.dataset.theme;
+                    body.classList.remove(...themeClasses);
+                    body.classList.add(theme);
+                });
+            });
+        });
+    </script>
+    
+</body>
+</html>
+
