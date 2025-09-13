@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Deep Dive into Early 2000s Web Design Principles Using Modern CSS</title>
+    <link href="../style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body class="theme-black">
+
+    <div class="container">
+
+        <header>
+            <!-- ...existing code... -->
+        </header>
+
+        <div class="main-content">
+
+            <main>
+                <article class="blog-article">
+                    <h2>A Deep Dive into Early 2000s Web Design Principles Using Modern CSS</h2>
+                    <p class="blog-meta">September 12, 2025 &mdash; Ruthvik Reddy Gade</p>
+                    <section>
+                        <p>
+                            The early 2000s were a formative era for web design. Table layouts, bright colors, animated GIFs, and pixel fonts dominated the digital landscape. While much has changed, the spirit of experimentation and simplicity from that era still inspires designers today.
+                        </p>
+                        <h3>Why Look Back?</h3>
+                        <p>
+                            Nostalgia is a powerful force. Many developers and users fondly remember the quirky, creative, and sometimes chaotic designs of the early web. Revisiting these styles with modern tools lets us appreciate their strengths and avoid their pitfalls.
+                        </p>
+                        <h3>Key Principles from the 2000s</h3>
+                        <ul>
+                            <li><strong>Bold Colors & Contrasts:</strong> Sites often used strong backgrounds and vivid accent colors.</li>
+                            <li><strong>Simple Navigation:</strong> Menus were straightforward, usually text-based, and easy to find.</li>
+                            <li><strong>Distinct Boxes:</strong> Content was separated into clear sections, often with borders or shading.</li>
+                            <li><strong>Minimal Interactivity:</strong> Most sites focused on delivering information, with few animations or effects.</li>
+                        </ul>
+                        <h3>Modern CSS Techniques</h3>
+                        <p>
+                            Today, CSS Grid and Flexbox make it easy to recreate classic layouts responsively. CSS variables allow for quick theme changes, and custom properties let us mimic retro color schemes. Accessibility and performance are easier to achieve, too.
+                        </p>
+                        <h3>Building a Retro-Inspired Site</h3>
+                        <p>
+                            To build a site in this style:
+                        </p>
+                        <ol>
+                            <li>Use CSS Grid for boxed layouts.</li>
+                            <li>Pick a bold color palette and stick to it.</li>
+                            <li>Keep navigation simple and visible.</li>
+                            <li>Limit animations to subtle hover effects.</li>
+                            <li>Focus on readable fonts and clear hierarchy.</li>
+                        </ol>
+                        <h3>Conclusion</h3>
+                        <p>
+                            Retro web design is more than nostalgia—it's a celebration of clarity and creativity. By blending old-school principles with modern CSS, you can create sites that are both fun and functional.
+                        </p>
+                    </section>
+                </article>
+            </main>
+
+            <aside>
+                <div class="sidebar-nav">
+                    <nav>
+                        <a href="../index.html">HOME</a>
+                        <a href="../projects.html">PROJECTS</a>
+                        <a href="../blog.html">BLOG</a>
+                        <a href="../contact.html">CONTACT</a>
+                    </nav>
+                </div>
+                <div class="widget" style="margin-top: 1em;">
+                    <h4>ABOUT THE AUTHOR</h4>
+                    <p>Ruthvik Reddy Gade is a developer and designer passionate about timeless digital experiences.</p>
+                </div>
+                <div class="widget">
+                    <h4>FEATURED POST</h4>
+                    <div class="featured-item">
+                        <a href="../blog.html">
+                            <h5>Why Retro Web Design is Making a Comeback</h5>
+                            <p>Exploring the appeal of nostalgia and simplicity in modern web development trends...</p>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2025 Your Name. All rights reserved.</p>
+                <div class="theme-selector">
+                    <span>Theme:</span>
+                    <span class="theme-button" data-theme="theme-green"></span>
+                    <span class="theme-button" data-theme="theme-blue"></span>
+                    <span class="theme-button" data-theme="theme-amber"></span>
+                    <span class="theme-button" data-theme="theme-red"></span>
+                    <span class="theme-button" data-theme="theme-black"></span>
+                </div>
+            </div>
+        </footer>
+
+    </div> 
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeButtons = document.querySelectorAll('.theme-button');
+            const body = document.body;
+            const themeClasses = ['theme-green', 'theme-blue', 'theme-amber', 'theme-red', 'theme-black'];
+
+            // Load theme from localStorage, default to theme-black
+            const savedTheme = localStorage.getItem('selectedTheme') || 'theme-black';
+            body.classList.remove(...themeClasses);
+            body.classList.add(savedTheme);
+
+            themeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const theme = button.dataset.theme;
+                    body.classList.remove(...themeClasses);
+                    body.classList.add(theme);
+                    localStorage.setItem('selectedTheme', theme);
+                });
+            });
+        });
+    </script>
+    
+</body>
+</html>

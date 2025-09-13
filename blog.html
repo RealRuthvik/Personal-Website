@@ -13,12 +13,6 @@
 
         <header>
             <!-- "YOUR NAME" logo removed -->
-            <nav>
-                <a href="index.html">HOME</a>
-                <a href="projects.html">PROJECTS</a>
-                <a href="blog.html">BLOG</a>
-                <a href="contact.html">CONTACT</a>
-            </nav>
         </header>
 
         <div class="main-content">
@@ -40,11 +34,27 @@
                         <a href="#" class="grid-item"><div class="grid-item-content"><h5>The Importance of Web Accessibility</h5><p class="grid-item-meta">August 01, 2025</p><p>Why making your websites accessible to everyone is not just good practice, but essential.</p></div></a>
                     </div>
                 </section>
+
+                <!-- Your blog post grid/list here -->
+                <div class="blog-grid">
+                    <!-- Example blog post items -->
+                    <div class="blog-item"><h5>Why Retro Web Design is Making a Comeback</h5><p>Exploring the appeal of nostalgia and simplicity...</p></div>
+                    <div class="blog-item"><h5>Modern CSS Tricks</h5><p>Tips for building responsive layouts in 2024...</p></div>
+                    <!-- ...existing blog items... -->
+                </div>
             </main>
 
             <aside>
-                <div class="widget">
-                    <h4>SEARCH POSTS</h4>
+                <div class="sidebar-nav">
+                    <nav>
+                        <a href="index.html">HOME</a>
+                        <a href="projects.html">PROJECTS</a>
+                        <a href="blog.html">BLOG</a>
+                        <a href="contact.html">CONTACT</a>
+                    </nav>
+                </div>
+                <div class="widget" style="margin-top: 1em;">
+                    <h4>SEARCH BLOG</h4>
                     <form class="search-widget">
                         <input type="search" placeholder="Enter keywords...">
                         <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -85,11 +95,35 @@
             const body = document.body;
             const themeClasses = ['theme-green', 'theme-blue', 'theme-amber', 'theme-red', 'theme-black'];
 
+            // Load theme from localStorage, default to theme-black
+            const savedTheme = localStorage.getItem('selectedTheme') || 'theme-black';
+            body.classList.remove(...themeClasses);
+            body.classList.add(savedTheme);
+
             themeButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     const theme = button.dataset.theme;
                     body.classList.remove(...themeClasses);
                     body.classList.add(theme);
+                    localStorage.setItem('selectedTheme', theme);
+                });
+            });
+
+            // Search functionality for blog posts
+            const searchForm = document.querySelector('.search-widget');
+            const searchInput = searchForm.querySelector('input[type="search"]');
+            const blogItems = document.querySelectorAll('.grid-container .grid-item');
+
+            searchForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const keyword = searchInput.value.trim().toLowerCase();
+                blogItems.forEach(item => {
+                    const text = item.textContent.toLowerCase();
+                    if (text.includes(keyword) || keyword === '') {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
                 });
             });
         });

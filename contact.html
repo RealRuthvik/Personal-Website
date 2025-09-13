@@ -13,12 +13,6 @@
 
         <header>
             <!-- "YOUR NAME" logo removed -->
-            <nav>
-                <a href="index.html">HOME</a>
-                <a href="projects.html">PROJECTS</a>
-                <a href="blog.html">BLOG</a>
-                <a href="contact.html">CONTACT</a>
-            </nav>
         </header>
 
         <div class="main-content">
@@ -49,7 +43,15 @@
             </main>
 
             <aside>
-                <div class="widget">
+                <div class="sidebar-nav">
+                    <nav>
+                        <a href="index.html">HOME</a>
+                        <a href="projects.html">PROJECTS</a>
+                        <a href="blog.html">BLOG</a>
+                        <a href="contact.html">CONTACT</a>
+                    </nav>
+                </div>
+                <div class="widget" style="margin-top: 1em;">
                     <h4>CONTACT INFO</h4>
                     <p>
                         <strong>Email:</strong><br>
@@ -108,11 +110,17 @@
             const body = document.body;
             const themeClasses = ['theme-green', 'theme-blue', 'theme-amber', 'theme-red', 'theme-black'];
 
+            // Load theme from localStorage, default to theme-black
+            const savedTheme = localStorage.getItem('selectedTheme') || 'theme-black';
+            body.classList.remove(...themeClasses);
+            body.classList.add(savedTheme);
+
             themeButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     const theme = button.dataset.theme;
                     body.classList.remove(...themeClasses);
                     body.classList.add(theme);
+                    localStorage.setItem('selectedTheme', theme);
                 });
             });
         });

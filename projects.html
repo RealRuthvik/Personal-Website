@@ -13,12 +13,6 @@
 
         <header>
             <!-- "YOUR NAME" logo removed -->
-            <nav>
-                <a href="index.html">HOME</a>
-                <a href="projects.html">PROJECTS</a>
-                <a href="blog.html">BLOG</a>
-                <a href="contact.html">CONTACT</a>
-            </nav>
         </header>
 
         <div class="main-content">
@@ -44,7 +38,15 @@
             </main>
 
             <aside>
-                <div class="widget">
+                <div class="sidebar-nav">
+                    <nav>
+                        <a href="index.html">HOME</a>
+                        <a href="projects.html">PROJECTS</a>
+                        <a href="blog.html">BLOG</a>
+                        <a href="contact.html">CONTACT</a>
+                    </nav>
+                </div>
+                <div class="widget" style="margin-top: 1.5em;">
                     <h4>SEARCH PROJECTS</h4>
                     <form class="search-widget">
                         <input type="search" placeholder="Enter keywords...">
@@ -86,11 +88,35 @@
             const body = document.body;
             const themeClasses = ['theme-green', 'theme-blue', 'theme-amber', 'theme-red', 'theme-black'];
 
+            // Load theme from localStorage, default to theme-black
+            const savedTheme = localStorage.getItem('selectedTheme') || 'theme-black';
+            body.classList.remove(...themeClasses);
+            body.classList.add(savedTheme);
+
             themeButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     const theme = button.dataset.theme;
                     body.classList.remove(...themeClasses);
                     body.classList.add(theme);
+                    localStorage.setItem('selectedTheme', theme);
+                });
+            });
+
+            // Search functionality for project boxes
+            const searchForm = document.querySelector('.search-widget');
+            const searchInput = searchForm.querySelector('input[type="search"]');
+            const projectItems = document.querySelectorAll('.grid-container .grid-item');
+
+            searchForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const keyword = searchInput.value.trim().toLowerCase();
+                projectItems.forEach(item => {
+                    const text = item.textContent.toLowerCase();
+                    if (text.includes(keyword) || keyword === '') {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
                 });
             });
         });

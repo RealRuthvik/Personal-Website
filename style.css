@@ -114,6 +114,16 @@ nav a { margin-left: 20px; font-size: 12px; text-transform: uppercase; }
     display: block;
 }
 
+.small-nav-item {
+    padding: 0.5em 1em !important;
+}
+.small-nav-item .grid-item-content i {
+    font-size: 1.2em !important;
+}
+.small-nav-item .grid-item-content h5 {
+    font-size: 1em !important;
+}
+
 /* --- Forms & Widgets --- */
 .contact-form { margin-top: 20px; }
 .form-group { margin-bottom: 15px; }
@@ -148,8 +158,9 @@ nav a { margin-left: 20px; font-size: 12px; text-transform: uppercase; }
 /* --- Grid Layout & Custom Scrollbar --- */
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1em;
+    align-items: start;
     margin-top: 10px;
     flex: 1;
     overflow-y: auto;
@@ -167,6 +178,9 @@ nav a { margin-left: 20px; font-size: 12px; text-transform: uppercase; }
 .grid-item-content h5 { color: var(--heading-color); margin: 0 0 10px 0; font-size: 13px; font-weight: bold; border-left: 3px solid var(--accent-color); padding-left: 8px; }
 .grid-item-content p { font-size: 12px; margin: 0 0 0 11px; line-height: 1.5; }
 .grid-item-meta { font-size: 11px; color: var(--accent-color); margin-bottom: 10px !important; display: block; margin-left: 11px; }
+.grid-item.hidden {
+    display: none;
+}
 
 /* --- Footer & Theme Selector --- */
 footer { border-top: 1px solid var(--border-color); padding: 10px 0; }
@@ -200,5 +214,29 @@ footer { border-top: 1px solid var(--border-color); padding: 10px 0; }
     header nav { text-align: center; }
     nav a { margin: 0 10px; }
     h3 { margin-top: 35px; }
+}
+.sidebar-nav {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0.5em;
+}
+.sidebar-nav nav {
+    display: flex;
+    gap: 0.5em;
+}
+.sidebar-nav a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+    padding: 0.25em 0.75em;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+.sidebar-nav a:hover {
+    background: rgba(255,255,255,0.1);
+}
+.blog-item.hidden, .grid-item.hidden {
+    display: none;
 }
 
