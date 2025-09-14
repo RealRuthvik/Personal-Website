@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Why Retro Web Design is Making a Comeback - Blog</title>
+    <title>Retro Resurgence - Project</title>
     <link href="../style.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
@@ -16,12 +16,12 @@
             align-items: flex-start;
             min-height: calc(100vh - 80px);
             gap: 2em;
-            flex-wrap: wrap; /* allow wrapping if needed */
+            flex-wrap: wrap;
         }
         main {
             flex: 1 1 0;
             max-width: 900px;
-            min-width: 350px; /* prevent shrinking too much */
+            min-width: 350px;
         }
         aside {
             width: 340px;
@@ -29,53 +29,50 @@
             max-width: 340px;
             flex-shrink: 0;
         }
-        .article-box {
+        .project-box {
             background: #181818;
             border: 1px solid #333;
             padding: 2em 2em 1em 2em;
             margin-bottom: 2em;
             height: 100%;
-            max-height: calc(100vh - 210px); /* header + footer + margins */
+            max-height: calc(100vh - 210px);
             overflow-y: auto;
             box-shadow: 0 2px 8px #0002;
-            /* Increase horizontal size */
             width: 100%;
-            max-width: 100%; /* don't exceed main's width */
+            max-width: 100%;
             box-sizing: border-box;
         }
-        .article-title {
+        .project-title {
             font-size: 1.5em;
             font-weight: bold;
             margin-bottom: 0.2em;
             letter-spacing: 1px;
         }
-        .article-meta {
+        .project-meta {
             color: #aaa;
             font-size: 0.95em;
             margin-bottom: 1.2em;
         }
-        .article-content p {
+        .project-content p {
             margin-bottom: 1em;
             line-height: 1.7;
         }
-        .article-content h2, .article-content h3 {
+        .project-content h2, .project-content h3 {
             margin-top: 1.5em;
             margin-bottom: 0.5em;
         }
-        /* Custom scrollbar to match blog page */
-        .article-box::-webkit-scrollbar {
+        .project-box::-webkit-scrollbar {
             width: 10px;
             background: #181818;
         }
-        .article-box::-webkit-scrollbar-thumb {
+        .project-box::-webkit-scrollbar-thumb {
             background: #333;
             border-radius: 5px;
         }
-        .article-box::-webkit-scrollbar-track {
+        .project-box::-webkit-scrollbar-track {
             background: #181818;
         }
-        /* For Firefox */
-        .article-box {
+        .project-box {
             scrollbar-width: thin;
             scrollbar-color: #333 #181818;
         }
@@ -88,52 +85,45 @@
     </style>
 </head>
 <body class="theme-black">
-
     <div class="container">
-
         <header>
             <!-- ...existing code... -->
         </header>
-
         <div class="main-content">
-
             <main>
                 <section>
                     <div class="page-header">
-                        <h3>WHY RETRO WEB DESIGN IS MAKING A COMEBACK</h3>
-                        <p>My thoughts on the appeal of nostalgia and simplicity in modern web development.</p>
+                        <h3>RETRO RESURGENCE</h3>
+                        <p>A deep dive into early 2000s web design principles, recreating classic layouts with modern CSS.</p>
                     </div>
-                    <div class="article-box">
-                        <div class="article-title">Why Retro Web Design is Making a Comeback</div>
-                        <div class="article-meta">Published on September 12, 2025</div>
-                        <div class="article-content">
+                    <div class="project-box">
+                        <div class="project-title">Retro Resurgence</div>
+                        <div class="project-meta">Started: July 2024</div>
+                        <div class="project-content">
                             <p>
-                                The web has come a long way since the early 2000s. Back then, websites were simple, fast, and often quirky. Today, as design trends cycle and nostalgia grows, we're seeing a resurgence of retro web design principles—think bold colors, pixel fonts, visible borders, and layouts that prioritize clarity over complexity.
+                                Retro Resurgence is a project dedicated to reviving the charm and simplicity of early 2000s web design. The goal is to blend nostalgic layouts, pixel fonts, and bold colors with modern CSS techniques, creating a site that feels both classic and fresh.
                             </p>
-                            <h2>Why the Nostalgia?</h2>
+                            <h2>Features</h2>
+                            <ul>
+                                <li>Classic table-based layouts recreated with CSS Grid and Flexbox</li>
+                                <li>Pixel-perfect typography and retro color palettes</li>
+                                <li>Accessible, fast-loading pages</li>
+                                <li>Custom scrollbar and border effects for a true vintage feel</li>
+                            </ul>
+                            <h2>Why Retro?</h2>
                             <p>
-                                Nostalgia is a powerful force. For many developers and users, the web of the past represents a time when creativity flourished and the barriers to entry were low. There were fewer rules, and experimentation was encouraged. The aesthetic of that era—table layouts, animated GIFs, and monospaced type—evokes a sense of fun and authenticity.
+                                The early web was a playground for creativity. By revisiting these design principles, Retro Resurgence aims to inspire a new wave of simple, user-focused web experiences. It's a reminder that good design is timeless and fun.
                             </p>
-                            <h2>Simplicity and Speed</h2>
-                            <p>
-                                Modern web design can sometimes feel overwhelming, with heavy frameworks and endless animations. Retro-inspired sites, by contrast, are often lightweight and fast. They focus on delivering content without distractions, making them accessible and enjoyable for everyone.
-                            </p>
-                            <h3>Timeless Design Principles</h3>
-                            <p>
-                                Good design is timeless. The best retro sites use clear hierarchy, strong contrast, and intuitive navigation. These principles are just as relevant today as they were decades ago. By revisiting them, we can create experiences that are both familiar and fresh.
-                            </p>
-                            <h2>How to Get Started</h2>
-                            <p>
-                                Want to try retro web design? Start with simple HTML and CSS. Use bold headings, visible borders, and a limited color palette. Experiment with pixel art or classic icons. Most importantly, focus on usability and fun—two things that never go out of style.
-                            </p>
-                            <p>
-                                Whether you're building a personal site or a new project, retro design can help you stand out and connect with users on a deeper level. Give it a try!
-                            </p>
+                            <h2>Tech Stack</h2>
+                            <ul>
+                                <li>HTML5 & CSS3</li>
+                                <li>JavaScript (ES6+)</li>
+                                <li>Font Awesome for icons</li>
+                            </ul>
                         </div>
                     </div>
                 </section>
             </main>
-
             <aside>
                 <div class="sidebar-nav">
                     <nav>
@@ -144,27 +134,16 @@
                     </nav>
                 </div>
                 <div class="widget" style="margin-top: 1em;">
-                    <h4>PUBLISHED BY</h4>
+                    <h4>CHECK IT OUT</h4>
                     <div class="featured-item">
-                        <p>Ruthvik Reddy Gade</p>
-                        <p><i class="fa-solid fa-calendar-days"></i> September 12, 2025</p>
-                        <p><i class="fa-brands fa-github"></i> <a href="https://github.com/RealRuthvik" target="_blank">GitHub</a></p>
-                    </div>
-                </div>
-                <div class="widget">
-                    <h4>FEATURED BLOG</h4>
-                    <div class="featured-item">
-                        <a href="../blogs/why-retro-web-design-is-making-a-comeback.html">
-                            <h5>Why Retro Web Design is Making a Comeback</h5>
-                            <p>Read my thoughts on the appeal of nostalgia and simplicity in modern web dev...</p>
+                        <a href="https://github.com/RealRuthvik/retro-resurgence" target="_blank">
+                            <i class="fa-brands fa-github"></i> GitHub Repository
                         </a>
                     </div>
                 </div>
                 <!-- ...existing code... -->
             </aside>
-
         </div>
-
         <footer>
             <div class="footer-content">
                 <p>&copy; 2025 Your Name. All rights reserved.</p>
