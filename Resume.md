@@ -1,5 +1,5 @@
 **Ruthvik Reddy Gade**  
-gaderuthvikreddy@gmail.com | mywebsite.com | [linkedin.com](https://www.linkedin.com/in/ruthvik-reddy-gade/)
+gaderuthvikreddy@gmail.com | mywebsite.com | [linkedin](https://www.linkedin.com/in/ruthvik-reddy-gade/)
 
 **TECHNICAL SKILLS**
 
