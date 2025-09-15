@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        .article-box { background: var(--widget-bg-color); border: 1px solid var(--border-color); padding: 2em; margin-bottom: 2em; max-height: calc(100vh - 210px); overflow-y: auto; }
+        .article-title { font-size: 1.5em; font-weight: bold; margin-bottom: 0.2em; letter-spacing: 1px; color: var(--heading-color); }
+        .article-meta { color: var(--text-color); opacity: 0.7; font-size: 0.95em; margin-bottom: 1.2em; }
+        .article-content p, .article-content li { margin-bottom: 1em; line-height: 1.7; }
+        .article-content h1, .article-content h2, .article-content h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: var(--heading-color); }
+        .article-box::-webkit-scrollbar { width: 10px; }
+        .article-box::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 5px; }
+        .article-box::-webkit-scrollbar-track { background: var(--widget-bg-color); }
+    </style>
+</head>
+<body class="theme-black">
+    <div class="container">
+        <header></header>
+        <div class="main-content">
+            <main>
+                <section>
+                    <div class="page-header">
+                        <h3 id="post-header-title">Loading Post...</h3>
+                        <p id="post-header-summary"></p>
+                    </div>
+                    <div class="article-box">
+                        <div class="article-title" id="post-body-title"></div>
+                        <div class="article-meta" id="post-meta"></div>
+                        <div class="article-content" id="post-content"></div>
+                    </div>
+                </section>
+            </main>
+            <aside>
+                <div class="sidebar-nav">
+                    <nav>
+                        <a href="index.html">HOME</a>
+                        <a href="projects.html">PROJECTS</a>
+                        <a href="blog.html">BLOG</a>
+                        <a href="contact.html">CONTACT</a>
+                    </nav>
+                </div>
+                <div class="widget" style="margin-top: 1em;">
+                    <h4>PUBLISHED BY</h4>
+                    <div class="featured-item" id="author-info">
+                        </div>
+                </div>
+            </aside>
+        </div>
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2025 Ruthvik Reddy Gade. All rights reserved.</p>
+                <div class="theme-selector">
+                    <span>Theme:</span>
+                    <span class="theme-button" data-theme="theme-green"></span>
+                    <span class="theme-button" data-theme="theme-blue"></span>
+                    <span class="theme-button" data-theme="theme-amber"></span>
+                    <span class="theme-button" data-theme="theme-red"></span>
+                    <span class="theme-button" data-theme="theme-black"></span>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            async function loadSinglePost() {
+                const params = new URLSearchParams(window.location.search);
+                const slug = params.get('slug');
+                if (!slug) { window.location.href = 'blog.html'; return; }
+
+                try {
+                    const metaResponse = await fetch('blogs.json');
+                    const posts = await metaResponse.json();
+                    const postMeta = posts.find(p => p.slug === slug);
+                    if (!postMeta) throw new Error('Post not found');
+
+                    const contentResponse = await fetch(`blogs/${slug}.md`);
+                    const markdown = await contentResponse.text();
+                    const contentHtml = marked.parse(markdown);
+
+                    document.title = `${postMeta.title} - Blog`;
+                    document.getElementById('post-header-title').textContent = postMeta.title;
+                    document.getElementById('post-header-summary').textContent = postMeta.summary;
+                    document.getElementById('post-body-title').textContent = postMeta.title;
+                    document.getElementById('post-meta').textContent = `Published on ${postMeta.date}`;
+                    document.getElementById('post-content').innerHTML = contentHtml;
+                    
+                    document.getElementById('author-info').innerHTML = `
+                         <p>Ruthvik Reddy Gade</p>
+                         <p style="display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-calendar-days"></i> ${postMeta.date}</p>
+                         <p style="display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-envelope"></i><a href="contact.html">Connect</a></p>
+                    `;
+
+                } catch (error) {
+                    document.getElementById('post-content').innerHTML = '<h2>Error: Post Not Found</h2><p>Could not load the requested blog post.</p>';
+                    console.error('Error loading single post:', error);
+                }
+            }
+
+            function setupThemeSwitcher() {
+                const themeButtons = document.querySelectorAll('.theme-button');
+                const body = document.body;
+                const themeClasses = ['theme-green', 'theme-blue', 'theme-amber', 'theme-red', 'theme-black'];
+                const savedTheme = localStorage.getItem('selectedTheme') || 'theme-black';
+                body.classList.remove(...themeClasses);
+                body.classList.add(savedTheme);
+
+                themeButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const theme = button.dataset.theme;
+                        body.classList.remove(...themeClasses);
+                        body.classList.add(theme);
+                        localStorage.setItem('selectedTheme', theme);
+                    });
+                });
+            }
+
+            loadSinglePost();
+            setupThemeSwitcher();
+        });
+    </script>
+</body>
+</html>

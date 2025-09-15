@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        .project-box { background: var(--widget-bg-color); border: 1px solid var(--border-color); padding: 2em; margin-bottom: 2em; max-height: calc(100vh - 210px); overflow-y: auto; }
+        .project-title { font-size: 1.5em; font-weight: bold; margin-bottom: 0.2em; color: var(--heading-color); }
+        .project-meta { opacity: 0.7; font-size: 0.95em; margin-bottom: 1.2em; }
+        .project-content p, .project-content li { margin-bottom: 1em; line-height: 1.7; }
+        .project-content h2, .project-content h3 { margin-top: 1.5em; margin-bottom: 0.5em; color: var(--heading-color); }
+        .project-box::-webkit-scrollbar { width: 10px; }
+        .project-box::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 5px; }
+        .project-box::-webkit-scrollbar-track { background: var(--widget-bg-color); }
+    </style>
+</head>
+<body class="theme-black">
+    <div class="container">
+        <header></header>
+        <div class="main-content">
+            <main>
+                <section>
+                    <div class="page-header">
+                        <h3 id="project-header-title">Loading Project...</h3>
+                        <p id="project-header-summary"></p>
+                    </div>
+                    <div class="project-box">
+                        <div class="project-title" id="project-body-title"></div>
+                        <div class="project-meta" id="project-meta"></div>
+                        <div class="project-content" id="project-content"></div>
+                    </div>
+                </section>
+            </main>
+            <aside>
+                <div class="sidebar-nav">
+                    <nav>
+                        <a href="index.html">HOME</a>
+                        <a href="projects.html">PROJECTS</a>
+                        <a href="blog.html">BLOG</a>
+                        <a href="contact.html">CONTACT</a>
+                    </nav>
+                </div>
+                <div class="widget" style="margin-top: 1em;" id="links-widget"></div>
+            </aside>
+        </div>
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2025 Your Name. All rights reserved.</p>
+                <div class="theme-selector">
+                    <span>Theme:</span>
+                    <span class="theme-button" data-theme="theme-green"></span>
+                    <span class="theme-button" data-theme="theme-blue"></span>
+                    <span class="theme-button" data-theme="theme-amber"></span>
+                    <span class="theme-button" data-theme="theme-red"></span>
+                    <span class="theme-button" data-theme="theme-black"></span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            async function loadSingleProject() {
+                const params = new URLSearchParams(window.location.search);
+                const slug = params.get('slug');
+                if (!slug) { window.location.href = 'projects.html'; return; }
+
+                try {
+                    // 1. Fetch metadata from the JSON file (no change here)
+                    const metaResponse = await fetch('projects.json');
+                    const projects = await metaResponse.json();
+                    const projectMeta = projects.find(p => p.slug === slug);
+                    if (!projectMeta) throw new Error('Project not found in JSON');
+
+                    // 2. Fetch the Markdown content from the project's .md file
+                    const contentResponse = await fetch(`projects/${slug}.md`);
+                    const markdownText = await contentResponse.text();
+
+                    // 3. Parse the Markdown into HTML using marked.js
+                    const contentHtml = marked.parse(markdownText);
+                    
+                    // 4. Populate the template with all the data (no change here)
+                    document.title = `${projectMeta.title} - Project`;
+                    document.getElementById('project-header-title').textContent = projectMeta.title;
+                    document.getElementById('project-header-summary').textContent = projectMeta.summary;
+                    document.getElementById('project-body-title').textContent = projectMeta.title;
+                    document.getElementById('project-meta').textContent = `Updated: ${projectMeta.date}`;
+                    document.getElementById('project-content').innerHTML = contentHtml;
+
+                    const linksWidget = document.getElementById('links-widget');
+                    let linksHTML = '<h4>CHECK IT OUT</h4><div class="featured-item">';
+                    if (projectMeta.github_url) {
+                        linksHTML += `<a href="${projectMeta.github_url}" target="_blank"><i class="fa-brands fa-github"></i> GitHub Repository</a>`;
+                    } else {
+                        linksHTML += `<p>No external links available.</p>`;
+                    }
+                    linksHTML += '</div>';
+                    linksWidget.innerHTML = linksHTML;
+
+                } catch (error) {
+                    document.getElementById('project-content').innerHTML = '<h2>Error Loading Project</h2><p>The requested project could not be loaded.</p>';
+                    console.error('Error:', error);
+                }
+            }
+            
+            // Standard theme switcher logic
+            const themeButtons = document.querySelectorAll('.theme-button');
+            const body = document.body;
+            const themeClasses = ['theme-green', 'theme-blue', 'theme-amber', 'theme-red', 'theme-black'];
+            const savedTheme = localStorage.getItem('selectedTheme') || 'theme-black';
+            body.classList.remove(...themeClasses);
+            body.classList.add(savedTheme);
+
+            themeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const theme = button.dataset.theme;
+                    body.classList.remove(...themeClasses);
+                    body.classList.add(theme);
+                    localStorage.setItem('selectedTheme', theme);
+                });
+            });
+
+            loadSingleProject();
+        });
+    </script>
+</body>
+</html>

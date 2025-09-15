@@ -8,57 +8,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body class="theme-black">
-
     <div class="container">
-
-        <header>
-            <!-- "YOUR NAME" logo removed -->
-        </header>
-
+        <header></header>
         <div class="main-content">
-
             <main>
                 <section>
                     <div class="page-header">
                         <h3>MY PROJECTS</h3>
                         <p>Here are some of the projects I've worked on. Click on any of them to learn more.</p>
                     </div>
-                    
-                    <div class="grid-container">
-                        <a href="projects/big-dice.html" class="grid-item">
-                            <div class="grid-item-content">
-                                <h5>Big Dice</h5>
-                                <p>A simulated Casino: Learn the strategies, master the games, and experience the casino thrill, all completely risk and ad free.</p>
-                            </div>
-                        </a>
-                        <a href="projects/vouch.html" class="grid-item">
-                            <div class="grid-item-content">
-                                <h5>Vouch</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet ullam molestias eveniet dolores facere voluptatem ratione sit accusamus exercitationem.</p>
-                            </div>
-                        </a>
-                        <a href="projects/crisis.html" class="grid-item">
-                            <div class="grid-item-content">
-                                <h5>Crisis</h5>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore sint aspernatur, est tenetur consectetur eius.</p>
-                            </div>
-                        </a>
-                        <a href="projects/minimal-electrical-power-system.html" class="grid-item">
-                            <div class="grid-item-content">
-                                <h5>Minimal Electrical Power System</h5>
-                                <p>A CircuitJS1 simulation of a CubeSat's power subsystem modeling battery charge/discharge cycles during alternating 60-minute sun (~6W) and 30-minute eclipse periods.</p>
-                            </div>
-                        </a>
-                        <a href="#" class="grid-item">
-                            <div class="grid-item-content">
-                                <h5>Lorem ipsum dolor sit amet.</h5>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum facilis modi debitis!</p>
-                            </div>
-                        </a>          
+                    <div class="grid-container" id="project-grid">
+                        <p>Loading projects...</p>
                     </div>
                 </section>
             </main>
-
             <aside>
                 <div class="sidebar-nav">
                     <nav>
@@ -77,17 +40,12 @@
                 </div>
                 <div class="widget">
                     <h4>FEATURED PROJECT</h4>
-                    <div class="featured-item">
-                        <a href="projects/minimal-electrical-power-system.html">
-                            <h5>Minimal Electrical Power System</h5>
-                            <p>A CircuitJS1 simulation of a CubeSat's power subsystem modeling battery charge/discharge cycles during alternating 60-minute sun (~6W) and 30-minute eclipse periods.</p>
-                        </a>
+                    <div class="featured-item" id="featured-project-widget">
+                        <p>Loading...</p>
                     </div>
                 </div>
             </aside>
-
         </div>
-
         <footer>
             <div class="footer-content">
                 <p>&copy; 2025 Your Name. All rights reserved.</p>
@@ -101,53 +59,109 @@
                 </div>
             </div>
         </footer>
-
     </div> 
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const themeButtons = document.querySelectorAll('.theme-button');
-            const body = document.body;
-            const themeClasses = ['theme-green', 'theme-blue', 'theme-amber', 'theme-red', 'theme-black'];
+            
+            // --- Universal Functions ---
 
-            // Load theme from localStorage, default to theme-black
-            const savedTheme = localStorage.getItem('selectedTheme') || 'theme-black';
-            body.classList.remove(...themeClasses);
-            body.classList.add(savedTheme);
-
-            themeButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const theme = button.dataset.theme;
-                    body.classList.remove(...themeClasses);
-                    body.classList.add(theme);
-                    localStorage.setItem('selectedTheme', theme);
-                });
-            });
-
-            // Search functionality for project boxes
-            const searchForm = document.querySelector('.search-widget');
-            const searchInput = searchForm.querySelector('input[type="search"]');
-            const projectItems = document.querySelectorAll('.grid-container .grid-item');
-
-            searchForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const keyword = searchInput.value.trim().toLowerCase();
-                projectItems.forEach(item => {
-                    const text = item.textContent.toLowerCase();
-                    if (text.includes(keyword) || keyword === '') {
-                        item.classList.remove('hidden');
+            async function loadFeaturedProject() {
+                const container = document.getElementById('featured-project-widget');
+                if (!container) return;
+                try {
+                    const response = await fetch('projects.json');
+                    const projects = await response.json();
+                    const featured = projects.find(p => p.featured === true);
+                    if (featured) {
+                        container.innerHTML = `
+                            <a href="project_template.html?slug=${featured.slug}">
+                                <h5>${featured.title}</h5>
+                                <p>${featured.summary}</p>
+                            </a>
+                        `;
                     } else {
-                        item.classList.add('hidden');
+                        container.innerHTML = `<p>No featured project selected.</p>`;
                     }
+                } catch (error) {
+                    container.innerHTML = `<p>Could not load featured project.</p>`;
+                }
+            }
+
+            function setupThemeSwitcher() {
+                const themeButtons = document.querySelectorAll('.theme-button');
+                const body = document.body;
+                const themeClasses = ['theme-green', 'theme-blue', 'theme-amber', 'theme-red', 'theme-black'];
+                const savedTheme = localStorage.getItem('selectedTheme') || 'theme-black';
+                body.classList.remove(...themeClasses);
+                body.classList.add(savedTheme);
+                themeButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const theme = button.dataset.theme;
+                        body.classList.remove(...themeClasses);
+                        body.classList.add(theme);
+                        localStorage.setItem('selectedTheme', theme);
+                    });
                 });
+            }
+
+            // --- Page-Specific Functions ---
+
+            async function loadProjects() {
+                const grid = document.getElementById('project-grid');
+                try {
+                    const response = await fetch('projects.json');
+                    const projects = await response.json();
+                    grid.innerHTML = '';
+                    projects.forEach(project => {
+                        const projectElement = document.createElement('a');
+                        projectElement.href = `project_template.html?slug=${project.slug}`;
+                        projectElement.className = 'grid-item';
+                        projectElement.innerHTML = `
+                            <div class="grid-item-content">
+                                <h5>${project.title}</h5>
+                                <p>${project.summary}</p>
+                            </div>
+                        `;
+                        grid.appendChild(projectElement);
+                    });
+                } catch (error) {
+                    grid.innerHTML = '<p>Could not load projects.</p>';
+                }
+            }
+            
+            // --- NEW: Search Functionality ---
+            function setupSearch() {
+                const searchForm = document.querySelector('.search-widget');
+                const searchInput = searchForm.querySelector('input[type="search"]');
+                const projectItems = document.querySelectorAll('#project-grid .grid-item');
+                
+                if (!searchForm) return;
+
+                searchForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const keyword = searchInput.value.trim().toLowerCase();
+                    projectItems.forEach(item => {
+                        const text = item.textContent.toLowerCase();
+                        if (text.includes(keyword)) {
+                            item.style.display = 'flex'; // Use 'flex' since .grid-item is display: flex
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            }
+
+            // --- Execution ---
+            
+            setupThemeSwitcher();
+            loadFeaturedProject();
+            
+            // Load the main grid, and ONLY AFTER it's done, set up the search
+            loadProjects().then(() => {
+                setupSearch();
             });
         });
     </script>
-    
 </body>
 </html>
-    </script>
-    
-</body>
-</html>
-

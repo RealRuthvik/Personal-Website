@@ -10,31 +10,19 @@
 <body class="theme-black">
 
     <div class="container">
-
-        <header>
-            <!-- "YOUR NAME" logo removed -->
-        </header>
-
+        <header></header>
         <div class="main-content">
-
             <main>
                 <section>
                     <div class="page-header">
-                        <h3>LATEST BLOGS</h3>
-                        <p>My thoughts on technology, design, and everything in between.</p>
+                        <h3>BLOGS</h3>
+                        <p>A collection of my thoughts on technology, design, and everything in between.</p>
                     </div>
                     
-                    <div class="grid-container">
-                        <a href="blogs/i-saw-the-demon-slayer-infinity-castle-movie-in-india-and-im-amazed.html" class="grid-item"><div class="grid-item-content"><h5>I Saw the Demon Slayer: Infinity Castle Movie in India, and I'm Amazed!</h5><p class="grid-item-meta">September 12, 2025</p><p>Exploring the appeal of nostalgia and simplicity in modern web development trends.</p></div></a>
+                    <div class="grid-container" id="blog-grid">
+                        <p>Loading posts...</p>
                     </div>
                 </section>
-
-                <!-- Your blog post grid/list here -->
-                <div class="blog-grid">
-                    <!-- Example blog post items -->
-                    <div class="blog-item"><h5><a href="blogs/i-saw-the-demon-slayer-infinity-castle-movie-in-india-and-im-amazed.html">I Saw the Demon Slayer: Infinity Castle Movie in India, and I'm Amazed!</a></h5><p>Exploring the appeal of nostalgia and simplicity...</p></div>
-                    <!-- ...existing blog items... -->
-                </div>
             </main>
 
             <aside>
@@ -55,20 +43,16 @@
                 </div>
                 <div class="widget">
                     <h4>FEATURED BLOG</h4>
-                    <div class="featured-item">
-                        <a href="blogs\i-saw-the-demon-slayer-infinity-castle-movie-in-india-and-im-amazed.html">
-                            <h5>I Saw the Demon Slayer: Infinity Castle Movie in India, and I'm Amazed!</h5>
-                            <p>Read my thoughts on the appeal of nostalgia and simplicity in modern web dev...</p>
-                        </a>
+                    <div class="featured-item" id="featured-blog-widget">
+                        <p>Loading...</p>
                     </div>
                 </div>
             </aside>
-
         </div>
 
         <footer>
             <div class="footer-content">
-                <p>&copy; 2025 Ruthvik Reddy Gade. All rights reserved.</p>
+                <p>&copy; 2025 Your Name. All rights reserved.</p>
                 <div class="theme-selector">
                     <span>Theme:</span>
                     <span class="theme-button" data-theme="theme-green"></span>
@@ -79,49 +63,110 @@
                 </div>
             </div>
         </footer>
-
     </div> 
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const themeButtons = document.querySelectorAll('.theme-button');
-            const body = document.body;
-            const themeClasses = ['theme-green', 'theme-blue', 'theme-amber', 'theme-red', 'theme-black'];
+            
+            async function loadFeaturedBlog() {
+                const container = document.getElementById('featured-blog-widget');
+                if (!container) return;
 
-            // Load theme from localStorage, default to theme-black
-            const savedTheme = localStorage.getItem('selectedTheme') || 'theme-black';
-            body.classList.remove(...themeClasses);
-            body.classList.add(savedTheme);
+                try {
+                    const response = await fetch('blogs.json');
+                    const blogs = await response.json();
+                    const featured = blogs.find(b => b.featured === true);
 
-            themeButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const theme = button.dataset.theme;
-                    body.classList.remove(...themeClasses);
-                    body.classList.add(theme);
-                    localStorage.setItem('selectedTheme', theme);
-                });
-            });
-
-            // Search functionality for blog posts
-            const searchForm = document.querySelector('.search-widget');
-            const searchInput = searchForm.querySelector('input[type="search"]');
-            const blogItems = document.querySelectorAll('.grid-container .grid-item');
-
-            searchForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const keyword = searchInput.value.trim().toLowerCase();
-                blogItems.forEach(item => {
-                    const text = item.textContent.toLowerCase();
-                    if (text.includes(keyword) || keyword === '') {
-                        item.classList.remove('hidden');
+                    if (featured) {
+                        container.innerHTML = `
+                            <a href="blog_template.html?slug=${featured.slug}">
+                                <h5>${featured.title}</h5>
+                                <p>${featured.summary}</p>
+                            </a>
+                        `;
                     } else {
-                        item.classList.add('hidden');
+                        container.innerHTML = `<p>No featured blog selected.</p>`;
                     }
+                } catch (error) {
+                    container.innerHTML = `<p>Could not load featured blog.</p>`;
+                }
+            }
+
+            function setupThemeSwitcher() {
+                const themeButtons = document.querySelectorAll('.theme-button');
+                const body = document.body;
+                const themeClasses = ['theme-green', 'theme-blue', 'theme-amber', 'theme-red', 'theme-black'];
+                const savedTheme = localStorage.getItem('selectedTheme') || 'theme-black';
+                body.classList.remove(...themeClasses);
+                body.classList.add(savedTheme);
+
+                themeButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const theme = button.dataset.theme;
+                        body.classList.remove(...themeClasses);
+                        body.classList.add(theme);
+                        localStorage.setItem('selectedTheme', theme);
+                    });
                 });
+            }
+
+            async function loadBlogPosts() {
+                const grid = document.getElementById('blog-grid');
+                try {
+                    const response = await fetch('blogs.json');
+                    const posts = await response.json();
+                    grid.innerHTML = ''; 
+
+                    posts.forEach(post => {
+                        const postElement = document.createElement('a');
+                        postElement.href = `blog_template.html?slug=${post.slug}`;
+                        postElement.className = 'grid-item';
+
+                        postElement.innerHTML = `
+                            <div class="grid-item-content">
+                                <h5>${post.title}</h5>
+                                <p class="grid-item-meta">${post.date}</p>
+                                <p>${post.summary}</p>
+                            </div>
+                        `;
+                        grid.appendChild(postElement);
+                    });
+                } catch (error) {
+                    grid.innerHTML = '<p>Could not load blog posts.</p>';
+                }
+            }
+            
+            function setupSearch() {
+                const searchForm = document.querySelector('.search-widget');
+                if (!searchForm) return;
+
+                const searchInput = searchForm.querySelector('input[type="search"]');
+                const blogItems = document.querySelectorAll('#blog-grid .grid-item');
+                
+                searchForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const keyword = searchInput.value.trim().toLowerCase();
+                    blogItems.forEach(item => {
+                        const text = item.textContent.toLowerCase();
+                        if (text.includes(keyword)) {
+                            item.style.display = 'flex'; // Use 'flex' since .grid-item is display: flex
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            }
+
+            // --- Execution ---
+            
+            setupThemeSwitcher();
+            loadFeaturedBlog();
+            
+            // Load the main grid, then set up the search functionality
+            loadBlogPosts().then(() => {
+                setupSearch();
             });
         });
     </script>
-    
 </body>
 </html>
-

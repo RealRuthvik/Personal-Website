@@ -1,0 +1,26 @@
+[
+  {
+    "slug": "minimal-electrical-power-system",
+    "title": "Minimal Electrical Power System",
+    "summary": "A CircuitJS1 simulation of a CubeSat's power subsystem modeling battery charge/discharge cycles...",
+    "date": "September 14, 2025",
+    "github_url": "https://github.com/RealRuthvik/Minimal-EPS",
+    "featured": true
+  },
+  {
+    "slug": "big-dice",
+    "title": "Big Dice",
+    "summary": "A simulated Casino: Learn the strategies, master the games, and experience the casino thrill, all completely risk and ad free.",
+    "date": "August 20, 2025",
+    "github_url": null,
+    "featured": false
+  },
+  {
+    "slug": "vouch",
+    "title": "Vouch",
+    "summary": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet ullam molestias eveniet dolores facere voluptatem ratione sit accusamus exercitationem.",
+    "date": "July 05, 2025",
+    "github_url": "https://github.com/your-username/vouch",
+    "featured": false
+  }
+]

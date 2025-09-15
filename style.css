@@ -21,7 +21,7 @@ body {
 }
 
 .container {
-    max-width: 850px;
+    max-width: 855px;
     width: 95%;
     margin: 0 auto;
     height: 100vh;
@@ -159,10 +159,10 @@ nav a { margin-left: 20px; font-size: 12px; text-transform: uppercase; }
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1em;
-    align-items: start;
+    gap: 1.5em;
+    align-items: stretch;
     margin-top: 10px;
-    flex: 1;
+    /* flex: 1;  <--- Simply remove this line */
     overflow-y: auto;
     padding-right: 15px;
     scrollbar-width: thin;
@@ -182,8 +182,26 @@ nav a { margin-left: 20px; font-size: 12px; text-transform: uppercase; }
     display: none;
 }
 
+/* Add this new rule to your style.css, for example after the .widget styles */
+.content-box {
+    background: var(--widget-bg-color);
+    border: 1px solid var(--border-color);
+    padding: 1.5em;
+    max-height: 400px; /* Adjust height as needed */
+    overflow-y: auto;
+    margin-top: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-color) var(--widget-bg-color);
+}
+.content-box::-webkit-scrollbar { width: 8px; }
+.content-box::-webkit-scrollbar-track { background: var(--widget-bg-color); }
+.content-box::-webkit-scrollbar-thumb { background-color: var(--border-color); }
+.content-box p { margin-top: 0; }
+.content-box h5 { color: var(--accent-color); }
+.content-box ul { list-style-type: '» '; padding-left: 20px; margin: 0; }
+.content-box li { padding-bottom: 5px; font-size: 12px; }
 /* --- Footer & Theme Selector --- */
-footer { border-top: 1px solid var(--border-color); padding: 10px 0; }
+footer { border-top: 1px solid var(--border-color); padding: 10px 0; margin-top: 25px;}
 .footer-content { display: flex; justify-content: space-between; align-items: center; }
 .theme-selector { display: flex; align-items: center; gap: 8px; }
 .theme-button { width: 15px; height: 15px; border: 1px solid var(--border-color); border-radius: 50%; cursor: pointer; transition: transform 0.2s ease; }
@@ -240,3 +258,32 @@ footer { border-top: 1px solid var(--border-color); padding: 10px 0; }
     display: none;
 }
 
+/* Add this to the bottom of style.css to fix the homepage scrollbar */
+main, aside {
+    overflow-y: hidden;
+}
+
+.sidebar-nav nav a {
+    margin-left: 0;
+}
+
+/* Final fix for homepage resume box layout and scrolling */
+
+/* 1. Turn the main column into a flexible container */
+.page-home main {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 2. Make the resume's parent section grow to fill the remaining space */
+.page-home main section:last-of-type {
+    flex: 1;
+    min-height: 0; /* A key fix for scrolling inside a flex item */
+    display: flex; 
+}
+
+/* 3. Make the resume box use all of its parent's space and scroll */
+.page-home .content-box {
+    flex: 1;
+    max-height: none; /* Remove any fixed height limit */
+}
