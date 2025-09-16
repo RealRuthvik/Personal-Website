@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found - Personal Site</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        /* Custom styles to center the 404 message */
+        .error-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100%;
+        }
+        .error-container h3 {
+            font-size: 1.5em;
+            margin-bottom: 0.5em;
+        }
+        .error-links a {
+            margin: 0 1em;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body class="theme-black">
+
+    <div class="container">
+        <header></header> <div class="main-content">
+            <main>
+                <div class="error-container">
+                    <h3>404: SIGNAL LOST</h3>
+                    <p>The page you're trying to reach doesn't exist or has been moved.</p>
+                    <p class="error-links">
+                        Let's get you back on track: 
+                        <a href="/index.html">HOME</a> |
+                        <a href="/projects.html">PROJECTS</a> |
+                        <a href="/blog.html">BLOG</a>
+                    </p>
+                </div>
+            </main>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2025 Ruthvik Reddy Gade. All rights reserved.</p>
+                <div class="theme-selector">
+                    <span>Theme:</span>
+                    <span class="theme-button" data-theme="theme-green"></span>
+                    <span class="theme-button" data-theme="theme-blue"></span>
+                    <span class="theme-button" data-theme="theme-amber"></span>
+                    <span class="theme-button" data-theme="theme-red"></span>
+                    <span class="theme-button" data-theme="theme-black"></span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Theme Switcher Logic
+            const themeButtons = document.querySelectorAll('.theme-button');
+            const body = document.body;
+            const themeClasses = ['theme-green', 'theme-blue', 'theme-amber', 'theme-red', 'theme-black'];
+            const savedTheme = localStorage.getItem('selectedTheme') || 'theme-black';
+            body.classList.remove(...themeClasses);
+            body.classList.add(savedTheme);
+
+            themeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const theme = button.dataset.theme;
+                    body.classList.remove(...themeClasses);
+                    body.classList.add(theme);
+                    localStorage.setItem('selectedTheme', theme);
+                });
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const internalLinks = document.querySelectorAll('a:not([target="_blank"]):not([href^="#"])');
+            internalLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const destination = this.href;
+                    if (destination === window.location.href) { return; }
+                    e.preventDefault();
+                    document.body.classList.add('fade-out');
+                    setTimeout(() => {
+                        window.location.href = destination;
+                    }, 100);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

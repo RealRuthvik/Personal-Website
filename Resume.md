@@ -19,11 +19,8 @@ VOUCH \- REPUTATION BASED CHAT & VIDEO ROULETTE	Website, [Source Code](https://g
 
 **RELEVANT EXPERIENCE**
 
-SOME SOME INTERNSHIP	Bengaluru, India  
+HONEYWELL HACKSPACE	Bengaluru, India  
 *Some internship with some some workdone.*	2025
-
-SOME SOME HACKATHON	Bengaluru, India  
-*Some hackathon with some some achievement.*	2025
 
 **EDUCATION**
 
