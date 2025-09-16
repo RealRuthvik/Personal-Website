@@ -272,3 +272,17 @@ main, aside {
     flex: 1;
     max-height: none; 
 }
+
+body {
+    animation: fadeIn 0.1s ease-in-out;
+}
+
+body.fade-out {
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

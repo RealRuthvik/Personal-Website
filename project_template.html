@@ -124,5 +124,30 @@
             loadSingleProject();
         });
     </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const internalLinks = document.querySelectorAll('a:not([target="_blank"]):not([href^="#"])');
+
+            internalLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const destination = this.href;
+
+                    if (destination === window.location.href) {
+                        return;
+                    }
+
+                    e.preventDefault();
+
+                    document.body.classList.add('fade-out');
+
+                    setTimeout(() => {
+                        window.location.href = destination;
+                    }, 100); 
+                });
+            });
+        });
+    </script>
 </body>
 </html>
