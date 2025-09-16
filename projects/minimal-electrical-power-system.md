@@ -4,12 +4,12 @@
 
 I understood the problem as the need to model a minimal Electrical Power Subsystem (EPS) for a CubeSat using CircuitJS1. The goal is to simulate the charge/discharge behavior over repeated sun and eclipse periods. The satellite is in the sun for 60 minutes (60 seconds simulation time) and in eclipse for 30 minutes (30 seconds simulation time). During the sun period, the system will receive approximately 6 W of solar power, which will charge the battery and power the loads. During the clipse period, the battery will be the sole power source for the satellite's loads. (Preview speed 100x & 30x respectively.)
 
-UPDATED Circuit (After the E-mail regarding pwl function.)
+UPDATED Circuit (With a pwl function.)
 
 Use it here: https://tinyurl.com/2bvepyky
 
 
-Circuit submitted on 5th September 2025 (Before the E-mail regarding pwl function.)
+Circuit submitted on 5th September 2025 (Without a pwl function.)
 
 Use it here: https://tinyurl.com/242qwz8d
 

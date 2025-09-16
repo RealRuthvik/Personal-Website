@@ -16,12 +16,12 @@
             <main>
                 <section>
                     <h3>Access granted. Welcome!</h3>
-                    <p>I'm a passionate developer and designer with a love for creating clean, efficient, and user-friendly digital experiences. My work is driven by a curiosity for how things work and a desire to build tools that solve real-world problems.</p>
-                    <p>This site itself is a project, built with simple HTML and CSS to recreate a classic 2003 web aesthetic, proving that good design is timeless.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi tenetur sunt est exercitationem, reprehenderit id? Expedita quibusdam molestiae aut quia!</p>
+                    <p>This website was originally built before I had coding skills. I've since used Gemini to help rebuild and modernize much of it.</p>
                 </section>
 
                 <section>
-                    <h3>RESUME</h3>
+                    <h3><a href="Resume.pdf" target="_blank">RESUME</a></h3>
                     <div class="content-box" id="resume-content">
                         <p>Loading resume...</p>
                     </div>
@@ -71,11 +71,9 @@
             </div>
         </footer>
     </div> 
-    
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            
-            // --- All functions are now complete ---
 
             async function loadResume() {
                 const container = document.getElementById('resume-content');
@@ -142,7 +140,6 @@
                 });
             }
 
-            // --- Execution ---
             setupThemeSwitcher();
             loadFeaturedBlog();
             loadFeaturedProject();

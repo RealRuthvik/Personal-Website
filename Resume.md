@@ -1,6 +1,3 @@
-**Ruthvik Reddy Gade**  
-gaderuthvikreddy@gmail.com | mywebsite.com | [linkedin](https://www.linkedin.com/in/ruthvik-reddy-gade/)
-
 **TECHNICAL SKILLS**
 
 Programming:   Python, Java, Kotlin, Javascript, Typescript, C, C++ & SQL.   
@@ -32,5 +29,3 @@ SOME SOME HACKATHON	Bengaluru, India
 
 MANIPAL ACADEMY OF HIGHER EDUCATION	Bengaluru, India  
 *Bachelor Of Technology \- BTech, Electronics & Computer Engineering*	2024 \- 2028
-
-

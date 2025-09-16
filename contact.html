@@ -7,12 +7,12 @@
     <link href="style.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
-        /* ...existing code... */
+
         textarea {
-            /* Custom scrollbar for consistency */
+
             scrollbar-width: thin;
             scrollbar-color: #333 #181818;
-            resize: none; /* Prevent resizing */
+            resize: none; 
         }
         textarea::-webkit-scrollbar {
             width: 10px;
@@ -25,7 +25,7 @@
         textarea::-webkit-scrollbar-track {
             background: #181818;
         }
-        /* ...existing code... */
+
     </style>
 </head>
 <body class="theme-black">
@@ -107,7 +107,7 @@
         <footer>
             <div class="footer-content">
                 <p>&copy; 2025 Ruthvik Reddy Gade. All rights reserved.</p>
-                
+
                 <div class="theme-selector">
                     <span>Theme:</span>
                     <span class="theme-button" data-theme="theme-green"></span>
@@ -120,14 +120,13 @@
         </footer>
 
     </div> 
-    
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const themeButtons = document.querySelectorAll('.theme-button');
             const body = document.body;
             const themeClasses = ['theme-green', 'theme-blue', 'theme-amber', 'theme-red', 'theme-black'];
 
-            // Load theme from localStorage, default to theme-black
             const savedTheme = localStorage.getItem('selectedTheme') || 'theme-black';
             body.classList.remove(...themeClasses);
             body.classList.add(savedTheme);
@@ -141,7 +140,6 @@
                 });
             });
 
-            // Contact form mailto handler
             const contactForm = document.getElementById('contactForm');
             contactForm.addEventListener('submit', function(e) {
                 e.preventDefault();
@@ -155,7 +153,6 @@
             });
         });
     </script>
-    
+
 </body>
 </html>
-

@@ -48,7 +48,7 @@
         </div>
         <footer>
             <div class="footer-content">
-                <p>&copy; 2025 Your Name. All rights reserved.</p>
+                <p>&copy; 2025 Ruthvik Reddy Gade. All rights reserved.</p>
                 <div class="theme-selector">
                     <span>Theme:</span>
                     <span class="theme-button" data-theme="theme-green"></span>
@@ -60,11 +60,9 @@
             </div>
         </footer>
     </div> 
-    
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            
-            // --- Universal Functions ---
 
             async function loadFeaturedProject() {
                 const container = document.getElementById('featured-project-widget');
@@ -105,8 +103,6 @@
                 });
             }
 
-            // --- Page-Specific Functions ---
-
             async function loadProjects() {
                 const grid = document.getElementById('project-grid');
                 try {
@@ -129,13 +125,12 @@
                     grid.innerHTML = '<p>Could not load projects.</p>';
                 }
             }
-            
-            // --- NEW: Search Functionality ---
+
             function setupSearch() {
                 const searchForm = document.querySelector('.search-widget');
                 const searchInput = searchForm.querySelector('input[type="search"]');
                 const projectItems = document.querySelectorAll('#project-grid .grid-item');
-                
+
                 if (!searchForm) return;
 
                 searchForm.addEventListener('submit', function(e) {
@@ -144,7 +139,7 @@
                     projectItems.forEach(item => {
                         const text = item.textContent.toLowerCase();
                         if (text.includes(keyword)) {
-                            item.style.display = 'flex'; // Use 'flex' since .grid-item is display: flex
+                            item.style.display = 'flex'; 
                         } else {
                             item.style.display = 'none';
                         }
@@ -152,12 +147,9 @@
                 });
             }
 
-            // --- Execution ---
-            
             setupThemeSwitcher();
             loadFeaturedProject();
-            
-            // Load the main grid, and ONLY AFTER it's done, set up the search
+
             loadProjects().then(() => {
                 setupSearch();
             });

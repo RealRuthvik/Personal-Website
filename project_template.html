@@ -48,7 +48,7 @@
         </div>
         <footer>
             <div class="footer-content">
-                <p>&copy; 2025 Your Name. All rights reserved.</p>
+                <p>&copy; 2025 Ruthvik Reddy Gade. All rights reserved.</p>
                 <div class="theme-selector">
                     <span>Theme:</span>
                     <span class="theme-button" data-theme="theme-green"></span>
@@ -71,20 +71,17 @@
                 if (!slug) { window.location.href = 'projects.html'; return; }
 
                 try {
-                    // 1. Fetch metadata from the JSON file (no change here)
+
                     const metaResponse = await fetch('projects.json');
                     const projects = await metaResponse.json();
                     const projectMeta = projects.find(p => p.slug === slug);
                     if (!projectMeta) throw new Error('Project not found in JSON');
 
-                    // 2. Fetch the Markdown content from the project's .md file
                     const contentResponse = await fetch(`projects/${slug}.md`);
                     const markdownText = await contentResponse.text();
 
-                    // 3. Parse the Markdown into HTML using marked.js
                     const contentHtml = marked.parse(markdownText);
-                    
-                    // 4. Populate the template with all the data (no change here)
+
                     document.title = `${projectMeta.title} - Project`;
                     document.getElementById('project-header-title').textContent = projectMeta.title;
                     document.getElementById('project-header-summary').textContent = projectMeta.summary;
@@ -107,8 +104,7 @@
                     console.error('Error:', error);
                 }
             }
-            
-            // Standard theme switcher logic
+
             const themeButtons = document.querySelectorAll('.theme-button');
             const body = document.body;
             const themeClasses = ['theme-green', 'theme-blue', 'theme-amber', 'theme-red', 'theme-black'];

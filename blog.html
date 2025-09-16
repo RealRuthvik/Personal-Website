@@ -16,9 +16,9 @@
                 <section>
                     <div class="page-header">
                         <h3>BLOGS</h3>
-                        <p>A collection of my thoughts on technology, design, and everything in between.</p>
+                        <p>A collection of my thoughts on random stuff.</p>
                     </div>
-                    
+
                     <div class="grid-container" id="blog-grid">
                         <p>Loading posts...</p>
                     </div>
@@ -52,7 +52,7 @@
 
         <footer>
             <div class="footer-content">
-                <p>&copy; 2025 Your Name. All rights reserved.</p>
+                <p>&copy; 2025 Ruthvik Reddy Gade. All rights reserved.</p>
                 <div class="theme-selector">
                     <span>Theme:</span>
                     <span class="theme-button" data-theme="theme-green"></span>
@@ -64,10 +64,10 @@
             </div>
         </footer>
     </div> 
-    
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            
+
             async function loadFeaturedBlog() {
                 const container = document.getElementById('featured-blog-widget');
                 if (!container) return;
@@ -135,21 +135,21 @@
                     grid.innerHTML = '<p>Could not load blog posts.</p>';
                 }
             }
-            
+
             function setupSearch() {
                 const searchForm = document.querySelector('.search-widget');
                 if (!searchForm) return;
 
                 const searchInput = searchForm.querySelector('input[type="search"]');
                 const blogItems = document.querySelectorAll('#blog-grid .grid-item');
-                
+
                 searchForm.addEventListener('submit', function(e) {
                     e.preventDefault();
                     const keyword = searchInput.value.trim().toLowerCase();
                     blogItems.forEach(item => {
                         const text = item.textContent.toLowerCase();
                         if (text.includes(keyword)) {
-                            item.style.display = 'flex'; // Use 'flex' since .grid-item is display: flex
+                            item.style.display = 'flex'; 
                         } else {
                             item.style.display = 'none';
                         }
@@ -157,12 +157,9 @@
                 });
             }
 
-            // --- Execution ---
-            
             setupThemeSwitcher();
             loadFeaturedBlog();
-            
-            // Load the main grid, then set up the search functionality
+
             loadBlogPosts().then(() => {
                 setupSearch();
             });

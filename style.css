@@ -1,11 +1,9 @@
-/* --- 1. Color Theme Definitions --- */
 .theme-green { --bg-color: #2A3A2B; --text-color: #C5C5C5; --heading-color: #FFFFFF; --widget-bg-color: #1E1E1E; --border-color: #4A4A4A; --accent-color: #6A8B3C; }
 .theme-blue { --bg-color: #0d1b2a; --text-color: #a8b2d1; --heading-color: #ccd6f6; --widget-bg-color: #172a45; --border-color: #233554; --accent-color: #64ffda; }
 .theme-amber { --bg-color: #1a1a1a; --text-color: #ffb000; --heading-color: #ffc957; --widget-bg-color: #111111; --border-color: #333333; --accent-color: #ffb000; }
 .theme-red { --bg-color: #1c0000; --text-color: #ff5555; --heading-color: #ff8888; --widget-bg-color: #111111; --border-color: #4d0000; --accent-color: #ff5555; }
 .theme-black { --bg-color: #121212; --text-color: #b3b3b3; --heading-color: #e0e0e0; --widget-bg-color: #1e1e1e; --border-color: #333333; --accent-color: #e0e0e0; }
 
-/* --- 2. Main Page Layout --- */
 html, body {
     height: 100vh;
     margin: 0;
@@ -53,7 +51,6 @@ main section {
     padding-bottom: 5px;
 }
 
-/* --- 3. Global Styles --- */
 a { color: var(--text-color); text-decoration: none; }
 a:hover { color: var(--accent-color); text-decoration: none; }
 h2, h3, h4, h5 { margin: 0 0 10px 0; padding: 0; font-weight: normal; text-transform: uppercase; }
@@ -61,7 +58,6 @@ h2 { font-size: 15px; font-weight: bold; color: var(--heading-color); }
 h3 { font-size: 14px; color: var(--heading-color); border-bottom: 1px solid var(--border-color); padding-bottom: 5px; margin-top: 25px; }
 p { line-height: 1.6; }
 
-/* --- 4. Component Styles --- */
 header { display: flex; justify-content: center; align-items: center; padding: 10px 0; }
 header nav { width: 100%; text-align: right; }
 .logo { font-size: 26px; font-weight: bold; color: var(--heading-color); letter-spacing: 1px; flex-shrink: 0; }
@@ -71,7 +67,6 @@ nav a { margin-left: 20px; font-size: 12px; text-transform: uppercase; }
 .widget h4 { font-size: 13px; font-weight: bold; color: var(--heading-color); border-left: 3px solid var(--accent-color); padding-left: 8px; }
 .widget p { margin-top: 0; font-size: 12px; }
 
-/* --- Home Page Specific Styles --- */
 .page-home .main-content {
     overflow-y: auto;
     scrollbar-width: thin;
@@ -83,7 +78,7 @@ nav a { margin-left: 20px; font-size: 12px; text-transform: uppercase; }
 .page-home .main-content::-webkit-scrollbar-thumb:hover { background-color: var(--accent-color); }
 
 .page-home main section {
-    height: auto; /* Override the fixed height for the home page */
+    height: auto; 
 }
 
 .home-nav-grid {
@@ -124,7 +119,6 @@ nav a { margin-left: 20px; font-size: 12px; text-transform: uppercase; }
     font-size: 1em !important;
 }
 
-/* --- Forms & Widgets --- */
 .contact-form { margin-top: 20px; }
 .form-group { margin-bottom: 15px; }
 .form-group label { display: block; margin-bottom: 5px; font-size: 12px; font-weight: bold; color: var(--heading-color); }
@@ -154,15 +148,14 @@ nav a { margin-left: 20px; font-size: 12px; text-transform: uppercase; }
 .skills-grid ul { list-style-type: '» '; padding-left: 20px; margin: 0; }
 .skills-grid li { padding-bottom: 5px; font-size: 12px; }
 
-
-/* --- Grid Layout & Custom Scrollbar --- */
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5em;
     align-items: stretch;
     margin-top: 10px;
-    /* flex: 1;  <--- Simply remove this line */
+    padding-top: 10px;
+
     overflow-y: auto;
     padding-right: 15px;
     scrollbar-width: thin;
@@ -182,12 +175,11 @@ nav a { margin-left: 20px; font-size: 12px; text-transform: uppercase; }
     display: none;
 }
 
-/* Add this new rule to your style.css, for example after the .widget styles */
 .content-box {
     background: var(--widget-bg-color);
     border: 1px solid var(--border-color);
     padding: 1.5em;
-    max-height: 400px; /* Adjust height as needed */
+    max-height: 400px; 
     overflow-y: auto;
     margin-top: 10px;
     scrollbar-width: thin;
@@ -200,7 +192,7 @@ nav a { margin-left: 20px; font-size: 12px; text-transform: uppercase; }
 .content-box h5 { color: var(--accent-color); }
 .content-box ul { list-style-type: '» '; padding-left: 20px; margin: 0; }
 .content-box li { padding-bottom: 5px; font-size: 12px; }
-/* --- Footer & Theme Selector --- */
+
 footer { border-top: 1px solid var(--border-color); padding: 10px 0; margin-top: 25px;}
 .footer-content { display: flex; justify-content: space-between; align-items: center; }
 .theme-selector { display: flex; align-items: center; gap: 8px; }
@@ -212,7 +204,6 @@ footer { border-top: 1px solid var(--border-color); padding: 10px 0; margin-top:
 [data-theme="theme-red"]   { background-color: #ff5555; }
 [data-theme="theme-black"] { background-color: #333333; }
 
-/* --- Responsive Styles --- */
 @media screen and (max-width: 768px) {
     .container { width: 100%; }
     .main-content { 
@@ -258,7 +249,6 @@ footer { border-top: 1px solid var(--border-color); padding: 10px 0; margin-top:
     display: none;
 }
 
-/* Add this to the bottom of style.css to fix the homepage scrollbar */
 main, aside {
     overflow-y: hidden;
 }
@@ -267,23 +257,18 @@ main, aside {
     margin-left: 0;
 }
 
-/* Final fix for homepage resume box layout and scrolling */
-
-/* 1. Turn the main column into a flexible container */
 .page-home main {
     display: flex;
     flex-direction: column;
 }
 
-/* 2. Make the resume's parent section grow to fill the remaining space */
 .page-home main section:last-of-type {
     flex: 1;
-    min-height: 0; /* A key fix for scrolling inside a flex item */
+    min-height: 0; 
     display: flex; 
 }
 
-/* 3. Make the resume box use all of its parent's space and scroll */
 .page-home .content-box {
     flex: 1;
-    max-height: none; /* Remove any fixed height limit */
+    max-height: none; 
 }
